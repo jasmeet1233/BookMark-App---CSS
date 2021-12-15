@@ -5,8 +5,8 @@ function* helloSaga() {
   console.log("Hello Sagas!");
 }
 
-const authenticateUserCall =  (action) => {
-    console.log('check')
+function* authenticateUserCall(action) {
+  console.log('check');
   console.log(action);
 };
 
