@@ -15,7 +15,8 @@ function* authenticateUser() {
     // yield put({type: 'Success', payload: data})
 }
 
-function* watchauthenticateUser() {
+function* watchauthenticateUser(payload) {
+    console.log(payload, "paylaod")
     yield takeEvery('CHECK_USER', authenticateUser)
 }
 

@@ -3,14 +3,18 @@ import './login.css'
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch();
-
+    console.log(dispatch)
+    const state = useSelector(state => state)
+    console.log(state, '===state')
     const history = useHistory();
     const loginHandler = (e) => {
+      console.log('clg')
       e.preventDefault()
      dispatch({type: 'CHECK_USER', payload: {email:email, password:password}})
     }
@@ -39,7 +43,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>
-            <button onClick={loginHandler} className="login__button">
+            <button onClick={() => loginHandler()} className="login__button">
               Login
             </button>
             
