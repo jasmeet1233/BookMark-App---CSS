@@ -1,20 +1,27 @@
 import React from 'react'
 import './Signup.css'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-//   const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
 //   const history = useHistory();
+
   const signupHandler = (e) => {
     e.preventDefault();
-    // dispatch({
-    //   type: "CHECK_USER",
-    //   payload: { email: email, password: password },
-    // });
+    if(email && password && name) {
+      console.log('hello')
+     dispatch({
+       type: "REGISTER_USER",
+       payload: { email: email, password: password, name: name },
+     });
+    } else {
+      alert('data missing')
+    }
   };
 
   return (
@@ -31,7 +38,7 @@ const Signup = () => {
           <p>Name</p>
           <input
             type="text"
-            value={email}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <p>Email</p>
@@ -47,10 +54,10 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>
-            <button onClick={signupHandler} className="login__button">
+            <button onClick={signupHandler} className="login__button signup">
               Create Account
             </button>
-            
+            <Link to='/login'>Login {'->'}</Link>
           </div>
         </form>
       </div>

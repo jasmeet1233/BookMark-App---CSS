@@ -2,11 +2,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Readex Pro', sans-serif;
+  font-family: "Readex Pro", sans-serif;
 }
 
 button {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .nav-container {
@@ -15,14 +15,15 @@ button {
   padding: 0rem 3rem;
   align-items: center;
   height: 3.5rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .nav-left {
   font-size: x-large;
 }
 
-.nav-center  {
+.nav-center {
   display: flex;
   justify-content: space-between;
   width: 25rem;
@@ -46,13 +47,12 @@ button {
   border-radius: 50%;
   width: 1.8rem;
   margin-left: 1.2rem;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .nav-right > p {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
-
 
 /* Main Container */
 
@@ -75,7 +75,7 @@ button {
 
 .top-sidebar > div {
   width: 8rem;
-  padding: .5rem .8rem .5rem 1rem;
+  padding: 0.5rem 0.8rem 0.5rem 1rem;
   margin-bottom: 1rem;
   color: purple;
   border-radius: 10px;
@@ -87,14 +87,14 @@ button {
 }
 
 .mid-sidebar {
-  display: flex; 
-  padding-left: 1rem ;
+  display: flex;
+  padding-left: 1rem;
   padding-top: 1rem;
 }
 
-.mid-sidebar > div{
+.mid-sidebar > div {
   margin-right: 1.2rem;
-  padding-bottom: .2rem;
+  padding-bottom: 0.2rem;
   margin-bottom: 2rem;
   color: purple;
   border-bottom: 1px solid purple;
@@ -102,13 +102,13 @@ button {
 
 .input-sidebar {
   position: relative;
-    height: 1.6rem;
+  height: 1.6rem;
 }
 
 .input-sidebar > div {
   position: absolute;
   top: 4px;
-  left: 3px
+  left: 3px;
 }
 
 .input-sidebar input {
@@ -124,17 +124,16 @@ button {
   height: 100%;
   vertical-align: middle;
   padding-top: 2px;
-  margin-left: .4rem;
+  margin-left: 0.4rem;
   background-color: #e5e5e5;
   border-radius: 5px;
 }
-
 
 .content-container {
   background-color: #e5e5e5;
   display: flex;
   flex-direction: column;
-  width: calc(100% - 17% );
+  width: calc(100% - 17%);
   padding: 2rem;
 }
 
@@ -144,74 +143,66 @@ button {
   padding: 2rem 2rem 0rem 2rem;
   border-radius: 15px;
 }
- .top-content p {
-   padding: 1rem .5rem;
- }
+.top-content p {
+  padding: 1rem 0.5rem;
+}
 
- .top-content input {
-   border-radius: 10px;
-   height: 2rem;
-   width: 15rem;
- }
+.top-content input {
+  border-radius: 10px;
+  height: 2rem;
+  width: 15rem;
+}
 
- .save-button__area {
-   display: flex;
-   justify-content: space-between;
-   width: 40rem;
- }
+.save-button__area {
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+}
 
- .save-button__area input {
-   width: 80%;
- }
+.save-button__area input {
+  width: 80%;
+}
 
- .save-button__area button {
-   margin-top: 1.5rem;
-   padding: .5rem 1rem;
-   border-radius: 10px;
-   width: 6rem;
- }
+.save-button__area button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  width: 6rem;
+}
 
- .filter-bar {
-   display: flex;
-   margin: 1.5rem 0rem;
+.filter-bar {
+  display: flex;
+  margin: 1.5rem 0rem;
   height: 2.5rem;
   align-items: center;
   justify-content: space-between;
- }
+}
 
- .filter-bar button {
-   background-color: inherit;
-   border: none;
-   border-style: none;
-   vertical-align: middle;
-   margin-left: .8rem;
- }
+.filter-bar button {
+  background-color: inherit;
+  border: none;
+  border-style: none;
+  vertical-align: middle;
+  margin-left: 0.8rem;
+}
 
- .filter-bar__left input{
+.filter-bar__left input {
   height: 1.7rem;
   width: 18rem;
   border: none;
   border-radius: 7px;
   padding-left: 1rem;
- }
+}
 
- .filter-bar__right {
-   display: flex;
-   align-items: center;
- }
+.filter-bar__right {
+  display: flex;
+  align-items: center;
+}
 
- .filter-bar__right p {
-    padding: .2rem .5rem;
-    border: 1px solid purple;
-    border-radius: 10px;
-    font-weight: bold;
-    color: purple;
- }
-
- 
-
-
-
-
-
-
+.filter-bar__right p {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid purple;
+  border-radius: 10px;
+  font-weight: bold;
+  color: purple;
+}
