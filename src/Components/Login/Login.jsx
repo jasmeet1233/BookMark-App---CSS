@@ -21,13 +21,10 @@ const Login = () => {
     });
   };
 
-  const redicrect = useMemo(() => {
+
   if (data.redirect) {
     history.push("/");
   }
-  }, [data])
-
-
 
   return (
     <div className="login">

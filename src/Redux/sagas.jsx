@@ -9,6 +9,7 @@ export function* helloSaga() {
 async function authenticateUserCall({ payload }) {
   try {
     const response = await axios.post(`${url}/login`, payload);
+    console.log(response)
     return response.data
   } catch (error) {
     console.log(error)

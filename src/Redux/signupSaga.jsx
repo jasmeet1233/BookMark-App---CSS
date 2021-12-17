@@ -21,6 +21,7 @@ async function postData({ payload }) {
 function* helperSignUp(action) {
   try {
     const data = yield call(postData, action);
+    console.log(data)
     // yield put({ type: "SignUp_Success", payload: data });
   } catch (error) {
     console.log(error);
