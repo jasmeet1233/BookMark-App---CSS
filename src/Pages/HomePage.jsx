@@ -1,14 +1,21 @@
-import React from 'react'
-import NavBar from '../Components/Navigation/NavBar'
-import MainContainer from '../Components/mainContainer/MainContainer'
+import React from "react";
+import NavBar from "../Components/Navigation/NavBar";
+import MainContainer from "../Components/mainContainer/MainContainer";
+import { useHistory } from "react-router-dom";
 
 const HomePage = () => {
-    return (
-        <>
-        <NavBar />
-        <MainContainer/>
-        </>
-    )
-}
+  const history = useHistory();
 
-export default HomePage
+  if (!localStorage.getItem("bookmarkToken")) {
+    history.push("/login");
+  }
+
+  return (
+    <>
+      <NavBar />
+      <MainContainer />
+    </>
+  );
+};
+
+export default HomePage;

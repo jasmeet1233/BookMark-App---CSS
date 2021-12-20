@@ -1,26 +1,36 @@
-import React from 'react'
-import './Signup.css'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import "./Signup.css";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const dispatch = useDispatch();
-//   const history = useHistory();
+  const history = useHistory();
+  const data = useSelector((state) => state.bookmarkReducer);
+
+  useEffect(() => {
+    if (data.redirect) {
+      history.push("/");
+    } else if (data.errorMessage) {
+      console.log(data.errorMessage);
+      alert("email already in use");
+    }
+  }, [data]);
 
   const signupHandler = (e) => {
     e.preventDefault();
-    if(email && password && name) {
-      console.log('hello')
-     dispatch({
-       type: "REGISTER_USER",
-       payload: { email: email, password: password, name: name },
-     });
+    if (email && password && name) {
+      console.log("signup handler");
+      dispatch({
+        type: "REGISTER_USER",
+        payload: { email: email, password: password, name: name },
+      });
     } else {
-      alert('data missing')
+      alert("data missing");
     }
   };
 
@@ -57,7 +67,9 @@ const Signup = () => {
             <button onClick={signupHandler} className="login__button signup">
               Create Account
             </button>
-            <Link to='/login'>Login {'->'}</Link>
+            <Link to="/login" onClick={() => dispatch({ type: "Reset" })}>
+              Login {"->"}
+            </Link>
           </div>
         </form>
       </div>
@@ -65,4 +77,4 @@ const Signup = () => {
   );
 };
 
-export default Signup
+export default Signup;
