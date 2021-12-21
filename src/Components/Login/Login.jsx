@@ -4,49 +4,50 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import useAuthenticationHook from "../../Hooks/authenticationHook";
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [disableClick, useDisableClick] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const loginBtnRef = useRef();
+  const { isUserLoggedIn } = useAuthenticationHook();
+  
 
   const data = useSelector((state) => state.bookmarkReducer);
   console.log(data, "---app");
-
-  // useEffect(() => {
-  //   localStorage.setItem("todoList", JSON.stringify(todoList));
-  // }, [localDataRef.current]);
-
-  if (localStorage.getItem("bookmarkToken")) {
-    console.log(localStorage.getItem("bookmarkToken"));
-    history.push("/");
-  }
+  console.log(isEmpty(data.userData), "----");
 
   useEffect(() => {
-    if (data.redirect) {
+    isUserLoggedIn();
+  }, []);
+
+  useEffect(() => {
+    if (!isEmpty(data.userData)) {
+      console.log(isEmpty(data.userData));
       localStorage.setItem(
         "bookmarkToken",
         JSON.stringify(data.userData.token)
       );
       history.push("/");
-    } else if (data.error === true) {
-      loginBtnRef.current.disabled = false;
+    } else if (data.errorMessage.length > 1) {
       alert("email or password is wrong");
-      useDisableClick(false);
     }
   }, [data]);
 
   const loginHandler = (e) => {
-    loginBtnRef.current.disabled = true;
-    useDisableClick(true);
     e.preventDefault();
+    console.log("login Handler");
     dispatch({
       type: "CHECK_USER",
       payload: { email: email, password: password },
     });
+    
   };
 
   return (
@@ -76,7 +77,7 @@ const Login = () => {
             <button
               onClick={loginHandler}
               className="login__button"
-              ref={loginBtnRef}
+              disabled = {data.isLoading ? true : false}
             >
               Login
             </button>

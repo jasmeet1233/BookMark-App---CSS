@@ -11,11 +11,13 @@ const Signup = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const data = useSelector((state) => state.bookmarkReducer);
+  
+
 
   useEffect(() => {
-    if (data.redirect) {
+    if (data.isLoading) {
       history.push("/");
-    } else if (data.errorMessage) {
+    } else if (data.errorMessage.length > 1) {
       console.log(data.errorMessage);
       alert("email already in use");
     }
@@ -25,6 +27,9 @@ const Signup = () => {
     e.preventDefault();
     if (email && password && name) {
       console.log("signup handler");
+      dispatch({
+        type: "Loading",
+      });
       dispatch({
         type: "REGISTER_USER",
         payload: { email: email, password: password, name: name },

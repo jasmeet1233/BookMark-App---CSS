@@ -1,30 +1,41 @@
+//isLoading & errorMsg
+
 const initialStore = {
   userData: {},
-  error: false,
-  redirect: false,
+  // error: false,
+  // redirect: false,
+  isLoading: false,
   errorMessage: "",
 };
 
 export const bookmarkReducer = (state = initialStore, action) => {
   if (action.type === "Success") {
-    return { ...state, userData: action.payload, redirect: true };
+    return { ...state, userData: action.payload, isLoading: false };
   }
 
   if (action.type === "Error") {
     console.log(action);
-    return { ...state, error: true, errorMessage: action.payload.message };
+    return { ...state, errorMessage: action.payload.message, isLoading: false };
   }
 
   if (action.type === "SignUp_Success") {
-    return { ...state, userData: action.payload, redirect: true };
+    return { ...state, userData: action.payload, isLoading: false };
   }
 
   if (action.type === "SignUp_Fail") {
-    return { ...state, errorMessage: "Email Id already in use", error: true };
+    return {
+      ...state,
+      errorMessage: "Email Id already in use",
+      isLoading: false,
+    };
   }
 
   if (action.type === "Reset") {
     return { ...initialStore };
+  }
+
+  if (action.type === "Loading") {
+    return { ...state, isLoading: true };
   }
   return state;
 };

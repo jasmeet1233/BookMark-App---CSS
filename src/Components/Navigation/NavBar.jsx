@@ -1,8 +1,18 @@
 import React from 'react'
 import { BsBell } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io"; 
+import { useHistory } from 'react-router-dom';
 
 const NavBar = () => {
+
+  const history = useHistory();
+
+  const logoutHandler = () => {
+    localStorage.removeItem('bookmarkToken');
+    history.push('/login');
+  }
+
+
     return (
       <nav className="nav-container">
         <div className="nav-left">LOGO</div>
@@ -12,6 +22,8 @@ const NavBar = () => {
           <div>Text</div>
         </div>
 
+      
+
         <div className="nav-right">
           <BsBell size={20} />
           <img
@@ -19,7 +31,7 @@ const NavBar = () => {
             alt="man"
           />
           <p>Jasmeet Singh</p>
-          <IoMdArrowDropdown />
+          <IoMdArrowDropdown onClick={logoutHandler}/>
         </div>
       </nav>
     );

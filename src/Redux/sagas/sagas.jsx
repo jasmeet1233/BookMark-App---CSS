@@ -7,17 +7,20 @@ export function* helloSaga() {
 }
 
 function* authenticateUser(action) {
+  console.log("authenticateUser working");
+  yield put({ type: "Loading" });
   try {
-     const data = yield call(authenticateUserCall, action);
+    const data = yield call(authenticateUserCall, action);
     //  console.log(data, '---saga data')
-     yield put({type: 'Success', payload: data});
-  } catch (error) {
-    yield put({type: 'Error', payload: error});
-  }  
+    yield put({ type: "Success", payload: data })
+  }
+  
+  catch (error) {
+    yield put({ type: "Error", payload: error });
+  }
 }
 
 export function* watchauthenticateUser() {
+  console.log("watchauthenticateUserusers working");
   yield takeEvery("CHECK_USER", authenticateUser);
 }
-
-

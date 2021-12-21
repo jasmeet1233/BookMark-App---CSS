@@ -5,6 +5,7 @@ const url = "https://bookmarks-app-server.herokuapp.com";
 import { postData } from "../../API_Calls/Login_Signup/Login_Signup";
 
 function* helperSignUp(action) {
+  yield put({ type: "Loading" });
   console.log("helperSignUp working");
   try {
     console.log(action, "----saga action");

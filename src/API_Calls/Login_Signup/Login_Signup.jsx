@@ -5,7 +5,6 @@ const url = "https://bookmarks-app-server.herokuapp.com";
 export async function authenticateUserCall({ payload }) {
   try {
     const response = await axios.post(`${url}/login`, payload);
-    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error.response);

@@ -1,7 +1,18 @@
 import React from 'react'
 import { FiSearch } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
+import axios from 'axios'
+import client from '../../API_Calls/api'
 
+
+const callApi = async() => {
+  const response = await client.get(
+    "/getAllusers"
+  );
+  console.log(response.data)
+}
+
+callApi()
 
 const Sidebar = () => {
     return (
