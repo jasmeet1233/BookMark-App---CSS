@@ -1,20 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import { BsGridFill } from "react-icons/bs";
 import { MdFormatListBulleted } from "react-icons/md";
 import { GrFilter } from "react-icons/gr";
+import { useSelector } from "react-redux";
+import client from "../../API_Calls/api";
+import axios from "axios";
 
 const ContentContainer = () => {
+  const fId = "7c28dc57-6d97-45b0-8632-11d3b6d671a0";
+  const [ url, setUrl] = useState('');
+  const [folder, setFolder] = useState('prime');
+  const data = useSelector(state => state.bookmarkReducer);
+
+  const saveHandler = async() => {
+    const response = await client.post("bookmark", {
+      data: {
+        folderId: fId,
+        url: url,
+        name: "bookmark",
+      },
+    });
+    console.log(response)
+  }
+
   return (
     <div className="content-container">
       <div className="top-content">
         <div>
           <h2>Add Quick Link</h2>
           <p>URL</p>
-          <input type="text" />
+          <input type="text" onChange={e => setUrl(e.target.value)}/>
           <p>Folder</p>
           <div className="save-button__area">
-            <input type="text" />
-            <button>Save</button>
+            <input type="text" value={folder}/>
+            <button onClick={saveHandler}>Save</button>
           </div>
         </div>
 

@@ -13,7 +13,6 @@ const Signup = () => {
   const data = useSelector((state) => state.bookmarkReducer);
   
 
-
   useEffect(() => {
     if (data.isLoading) {
       history.push("/");

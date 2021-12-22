@@ -33,7 +33,7 @@ const client = axios.create({
 client.interceptors.request.use(
   (config) => {
     const Config = config;
-    const token = localStorage.getItem("bookmarkToken");
+    const token = JSON.parse(localStorage.getItem("bookmarkToken"));
     if (token) {
       Config.headers.common["Authorization"] = `Bearer ${token}`;
     }

@@ -6,6 +6,7 @@ const initialStore = {
   // redirect: false,
   isLoading: false,
   errorMessage: "",
+  folder: []
 };
 
 export const bookmarkReducer = (state = initialStore, action) => {
@@ -36,6 +37,10 @@ export const bookmarkReducer = (state = initialStore, action) => {
 
   if (action.type === "Loading") {
     return { ...state, isLoading: true };
+  }
+
+  if(action.type === 'FoldersAdded'){
+    return {...state, folder: action.payload};
   }
   return state;
 };

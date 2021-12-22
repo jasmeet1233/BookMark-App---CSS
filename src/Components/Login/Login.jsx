@@ -47,7 +47,6 @@ const Login = () => {
       type: "CHECK_USER",
       payload: { email: email, password: password },
     });
-    
   };
 
   return (
