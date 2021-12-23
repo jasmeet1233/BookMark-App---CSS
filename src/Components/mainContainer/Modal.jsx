@@ -23,7 +23,6 @@ const ModalWindow = () => {
         <h3>Folder Name</h3>
         <input type="text"  onChange={e => setFolderName(e.target.value)}/>
         <button onClick={submitHandler}>Create Folder</button>
-
       </Modal>
     );
 }

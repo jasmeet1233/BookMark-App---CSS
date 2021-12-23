@@ -1,38 +1,36 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BsGridFill } from "react-icons/bs";
 import { MdFormatListBulleted } from "react-icons/md";
 import { GrFilter } from "react-icons/gr";
 import { useSelector } from "react-redux";
 import client from "../../API_Calls/api";
 import axios from "axios";
-import Modal from 'react-modal'
+import Modal from "react-modal";
 import ModalWindow from "./Modal";
 
 const ContentContainer = () => {
-  const fId = "7c28dc57-6d97-45b0-8632-11d3b6d671a0";
-  const [ url, setUrl] = useState('');
-  const [folder, setFolder] = useState('prime');
-  const data = useSelector(state => state.bookmarkReducer);
+  const [url, setUrl] = useState("");
+  const [folderID, setFolderID] = useState("");
+  const data = useSelector((state) => state.bookmarkReducer);
+  const [open, setOpen] = useState("false");
+  // console.log(data.folder)
 
-
-  const saveHandler = async() => {
+  const saveHandler = async () => {
     try {
-      const response = await client.post("bookmark", 
-         {
-          folderId: fId,
-          url: url,
-          name: "bookmark",
-        },
-      );
+      const response = await client.post("bookmark", {
+        folderId: folderID,
+        url: url,
+        name: "bookmark",
+      });
       console.log(response.data);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
 
   return (
     <>
-    <ModalWindow />
+      <ModalWindow />
       <div className="content-container">
         <div className="top-content">
           <div>
@@ -41,7 +39,21 @@ const ContentContainer = () => {
             <input type="text" onChange={(e) => setUrl(e.target.value)} />
             <p>Folder</p>
             <div className="save-button__area">
-              <input type="text" value={folder} onChange={() => {}} />
+              <input type="text" />
+              <div
+                style={{
+                  position: "relative",
+                  top: "30px",
+                  left: "-300px",
+                  backgroundColor: "white",
+                  color: "black",
+                  maxWidth: '200px'
+                }}
+              >
+                {data.folder.map((item) => {
+                  return <p key={item.id} style={{display: 'inline', height: '20px'}} onClick={() => setFolderID(item.id)}>{item.name}</p>;
+                })}
+              </div>
               <button onClick={saveHandler}>Save</button>
             </div>
           </div>
