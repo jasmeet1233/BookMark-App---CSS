@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
 const dummyData = {
-  name: "prime",
+  name: "netflix",
   id: `${uuidv4()}`,
 };
 
@@ -36,8 +36,6 @@ const MainContainer = () => {
 
   const dispatch = useDispatch();
   useEffect(async () => {
-    //  const response = client.post('/folder', dummyData)
-    //  console.log(response.data);
      const response2 = await client.get("/folders");
      console.log(response2);
     dispatch({ type: "FoldersAdded", payload: response2.data });

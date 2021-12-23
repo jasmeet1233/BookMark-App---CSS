@@ -6,7 +6,8 @@ const initialStore = {
   // redirect: false,
   isLoading: false,
   errorMessage: "",
-  folder: []
+  folder: [],
+  isModalOpen: false
 };
 
 export const bookmarkReducer = (state = initialStore, action) => {
@@ -40,7 +41,12 @@ export const bookmarkReducer = (state = initialStore, action) => {
   }
 
   if(action.type === 'FoldersAdded'){
-    return {...state, folder: action.payload};
+    return {...state, folder: action.payload, isModalOpen: false};
   }
+
+  if (action.type === "openModal") {
+    return { ...state, isModalOpen: true };
+  }
+  
   return state;
 };
