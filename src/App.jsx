@@ -7,8 +7,8 @@ import {
   Switch,
   useHistory,
 } from "react-router-dom";
-import Login from "./Components/Login/Login";
-import Signup from "./Components/Signup/Signup";
+import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/Signup";
 import { useSelector } from "react-redux";
 
 // check token - if true - push /home

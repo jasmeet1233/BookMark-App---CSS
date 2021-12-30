@@ -48,5 +48,9 @@ export const bookmarkReducer = (state = initialStore, action) => {
     return { ...state, isModalOpen: true };
   }
   
+  if(action.type === 'CloseModal'){
+    return { ...state, isModalOpen: false };
+  }
+
   return state;
 };

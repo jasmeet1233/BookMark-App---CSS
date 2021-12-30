@@ -1,0 +1,17 @@
+.dropdown {
+  position: relative;
+  top: 30px;
+  left: -280px;
+  background-color: white;
+  color: black;
+  width: 200px;
+  height: 100%;
+}
+
+.hide_dropdown {
+    display: none;
+}
+
+.input_dropdown {
+    
+}

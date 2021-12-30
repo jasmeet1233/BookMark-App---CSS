@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import ContentContainer from "./ContentContainer";
 import Sidebar from "./Sidebar";
-import client from "../../API_Calls/api";
+import client from "../../api/api_loginSignUp";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
@@ -12,27 +12,6 @@ const dummyData = {
 };
 
 const MainContainer = () => {
-  // console.log(uuidv4());
-  //   let token;
-  //   const baseURL = "https://bookmarks-app-server.herokuapp.com";
-
-  //   if(localStorage.getItem('bookmarkToken')){
-  //     token = JSON.parse(localStorage.getItem("bookmarkToken"));
-  //   }
-  //   console.log(token)
-
-  // const returnAxios = (data) => {
-  //  const authAxios = axios.create({
-  //     baseURL: baseURL,
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       data: dummyData
-  //     },
-  //     data: data
-  //   })
-
-  //   return authAxios
-  // }
 
   const dispatch = useDispatch();
   useEffect(async () => {

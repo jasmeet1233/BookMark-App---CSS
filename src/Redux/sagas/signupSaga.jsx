@@ -2,7 +2,7 @@
 import axios from "axios";
 import { put, takeEvery, all, call } from "@redux-saga/core/effects";
 const url = "https://bookmarks-app-server.herokuapp.com";
-import { postData } from "../../API_Calls/Login_Signup/Login_Signup";
+import { postData } from "../../api/Login_Signup/Login_Signup";
 
 function* helperSignUp(action) {
   yield put({ type: "Loading" });

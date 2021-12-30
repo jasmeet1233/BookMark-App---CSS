@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useAuthenticationHook from "../../Hooks/authenticationHook";
+import InputField from "../../Components/Input";
+import Button from "../../Components/Button";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -17,7 +19,6 @@ const Login = () => {
   const history = useHistory();
   const loginBtnRef = useRef();
   const { isUserLoggedIn } = useAuthenticationHook();
-  
 
   const data = useSelector((state) => state.bookmarkReducer);
   console.log(data, "---app");
@@ -49,38 +50,54 @@ const Login = () => {
     });
   };
 
+  const changeHandler = (e) => {
+    setEmail(e.target.value)
+  }
+
   return (
     <div className="login">
       <div className="login__logo">
         <img
           src="https://cdn-images-1.medium.com/max/92/1*q1NSpt2nAvFdp0ZUYSgeHQ@2x.png"
           alt="glue-logo"
+          loading="lazy"
         />
       </div>
 
       <div className="login__form-container">
         <form>
-          <p>Email</p>
-          <input
-            type="email"
+          <InputField
+            name={"Email"}
+            type={"email"}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            changeHandler={changeHandler}
           />
-          <p>Password</p>
+          {/* <p>Password</p>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          /> */}
+          <InputField
+            name={"Password"}
+            type={"password"}
+            value={password}
+            changeHandler={(e) => setPassword(e.target.value)}
           />
           <div>
-            <button
+            {/* <button
               onClick={loginHandler}
               className="login__button"
-              disabled = {data.isLoading ? true : false}
+              disabled={data.isLoading ? true : false}
             >
               Login
-            </button>
-
+            </button> */}
+            <Button
+              clickHandler={loginHandler}
+              name={"Login"}
+              isLoading={data.isLoading}
+              style={'login__button'}
+            />
             <Link to="/signup">Create Account {"->"} </Link>
           </div>
         </form>
