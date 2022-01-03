@@ -6,6 +6,8 @@ import client from "../../api/api_loginSignUp";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
+//pos
+
 const url = "https://bookmarks-app-server.herokuapp.com/folder";
 const callApi = async () => {
   // const response = await client.get("/getAllusers");
@@ -38,8 +40,8 @@ const Sidebar = () => {
     //   .catch(function (error) {
     //     console.log(error);
     //   });
-
-    const response = await client.delete("folder", { data: { folderId: id } });
+    confirmDeletion()
+    const response = await client.delete("/folder", { data: { folderId: id } });
     console.log(response)
   };
 
@@ -47,9 +49,13 @@ const Sidebar = () => {
     dispatch({ type: "openModal" });
   };
 
+  function confirmDeletion() {
+    dispatch({ type: "openDeleteModal" });
+  }
+
   return (
     <aside className="sidebar">
-      <div className="top-sidebar">
+      {/* <div className="top-sidebar">
         <div>All projects</div>
         <div>Root</div>
         <div>Favorites</div>
@@ -58,7 +64,7 @@ const Sidebar = () => {
       <div className="mid-sidebar">
         <div>Folders</div>
         <div>Tags</div>
-      </div>
+      </div> */}
 
       <div className="input-sidebar">
         <div>

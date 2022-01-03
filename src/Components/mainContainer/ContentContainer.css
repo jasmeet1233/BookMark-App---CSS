@@ -1,11 +1,16 @@
 .dropdown {
-  position: relative;
+  position: absolute;
   top: 30px;
-  left: -280px;
-  background-color: white;
+  left: 4px;
   color: black;
   width: 200px;
   height: 100%;
+  z-index: 100;
+}
+
+.dropdown p {
+background-color: white;
+border-bottom: 1px solid rgb(238,130,238);
 }
 
 .hide_dropdown {
@@ -14,4 +19,13 @@
 
 .input_dropdown {
     
+}
+
+.deleteModal button {
+  padding: 5px;
+  margin: 10px;
+  background-color: transparent;
+  border: 1px solid rgb(238,130,238);
+  border-radius: 10px;
+  color: purple;
 }

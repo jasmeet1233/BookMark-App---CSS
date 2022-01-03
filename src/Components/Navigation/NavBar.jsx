@@ -16,7 +16,7 @@ const NavBar = () => {
     return (
       <nav className="nav-container">
         <div className="nav-left">LOGO</div>
-        <div className="nav-center">
+        {/* <div className="nav-center">
           <div>Links</div>
           <div>Images</div>
           <div>Text</div>
@@ -32,7 +32,7 @@ const NavBar = () => {
           />
           <p>Jasmeet Singh</p>
           <IoMdArrowDropdown onClick={logoutHandler}/>
-        </div>
+        </div> */}
       </nav>
     );
 }

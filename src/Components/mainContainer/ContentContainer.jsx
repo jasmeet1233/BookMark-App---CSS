@@ -18,56 +18,56 @@ const ContentContainer = () => {
   // const url = "https://bookmarks-app-server.herokuapp.com";
 
   const saveHandler = async () => {
-    console.log('savehandlerrr')
-      const token = await JSON.parse(localStorage.getItem("bookmarkToken"));
-      var data = {
-        folderId: folderID,
-        url: "https://en.wikipedia.org/wiki/Snack",
-        name: "Favourite Band",
-      };
+    console.log("savehandlerrr");
+    const token = await JSON.parse(localStorage.getItem("bookmarkToken"));
+    var data = {
+      folderId: folderID,
+      url: "https://en.wikipedia.org/wiki/Snack",
+      name: "Favourite Band",
+    };
 
-      var config = {
-        method: "post",
-        url: `https://bookmarks-app-server.herokuapp.com/bookmark`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: data,
-      };
+    var config = {
+      method: "post",
+      url: `https://bookmarks-app-server.herokuapp.com/bookmark`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: data,
+    };
 
-      axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
-//"56139fe9-cba3-4d7d-9c86-312b07bd2dcb"
+  //"56139fe9-cba3-4d7d-9c86-312b07bd2dcb"
 
   useEffect(async () => {
-   const response = await client.get("folder-bookmarks", {data:
-     {'folderId': "527d2c7c-7bc1-4ff8-8f2a-2804e1d4a96f"},
-   });
-    console.log(response)
-  }, [])
+    const response = await client.get("folder-bookmarks", {
+      params: { folderId: "527d2c7c-7bc1-4ff8-8f2a-2804e1d4a96f" },
+    });
+    console.log(response, "---response");
+  }, []);
 
   const selectFolder = (id, name) => {
     setFolderID(id);
     setFolderName(name);
   };
 
-const closeDropdown = (e) => {
-  if (
-    e.target.classList.contains("dropdown") ||
-    e.target.classList.contains("input_dropdown") ||
-    e.target.classList.contains("dropdown_p")
-  ) {
-    return;
-  } else {
-    setOpen(false);
-  }
-};
+  const closeDropdown = (e) => {
+    if (
+      e.target.classList.contains("dropdown") ||
+      e.target.classList.contains("input_dropdown") ||
+      e.target.classList.contains("dropdown_p")
+    ) {
+      return;
+    } else {
+      setOpen(false);
+    }
+  };
 
   return (
     <>
@@ -85,6 +85,7 @@ const closeDropdown = (e) => {
                 value={folderName}
                 className="input_dropdown"
                 onClick={() => setOpen(true)}
+                style={{paddingLeft: '10px'}}
               />
               <div className={open ? "dropdown" : "hide_dropdown"}>
                 {data.folder.map((item) => {
@@ -92,7 +93,6 @@ const closeDropdown = (e) => {
                     <p
                       key={item.id}
                       style={{
-                        borderBottom: "1px solid black",
                         padding: "3px",
                       }}
                       className="dropdown_p"

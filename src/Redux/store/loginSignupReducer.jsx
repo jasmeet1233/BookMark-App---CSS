@@ -7,7 +7,8 @@ const initialStore = {
   isLoading: false,
   errorMessage: "",
   folder: [],
-  isModalOpen: false
+  isModalOpen: false,
+  deleteModal: false
 };
 
 export const bookmarkReducer = (state = initialStore, action) => {
@@ -51,6 +52,10 @@ export const bookmarkReducer = (state = initialStore, action) => {
   if(action.type === 'CloseModal'){
     return { ...state, isModalOpen: false };
   }
+
+    if (action.type === "openDeleteModal") {
+      return { ...state, isModalOpen: true, deleteModal: true };
+    }
 
   return state;
 };
