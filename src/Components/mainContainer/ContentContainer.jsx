@@ -17,7 +17,7 @@ const ContentContainer = () => {
   const [name, setName] = useState("");
   const data = useSelector((state) => state.bookmarkReducer);
   const [open, setOpen] = useState(false);
-  const [display, setDisplay] = useState('grid')
+  const [display, setDisplay] = useState('flex')
   const dispatch = useDispatch()
   // console.log(data.folder)
   // const url = "https://bookmarks-app-server.herokuapp.com";
