@@ -32,7 +32,7 @@
 
 .login__button  {
     font-size: larger;
-    background-color: purple;
+    background-color: #5062b8;
     color: white;
     border: none;
     border-style: none;
@@ -56,5 +56,5 @@
 }
 
 .login__form-container button :hover {
-    color: purple;
+    color: #5062b8;
 }

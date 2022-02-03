@@ -34,7 +34,11 @@ button {
 .nav-center > div {
   height: 100%;
   padding: 1rem 1rem 0rem 1rem;
-  border-bottom: 1px solid black;
+  color: #5062b8;
+}
+
+.first_child {
+   border-bottom: 1px solid #5062b8;;
 }
 
 .nav-right {
@@ -77,12 +81,12 @@ button {
   width: 8rem;
   padding: 0.5rem 0.8rem 0.5rem 1rem;
   margin-bottom: 1rem;
-  color: purple;
+  color: #5062b8;
   border-radius: 10px;
 }
 
 .top-sidebar > div:hover {
-  background-color: purple;
+  background-color: #5062b8;
   color: white;
 }
 
@@ -96,8 +100,8 @@ button {
   margin-right: 1.2rem;
   padding-bottom: 0.2rem;
   margin-bottom: 2rem;
-  color: purple;
-  border-bottom: 1px solid purple;
+  color: #5062b8;
+  border-bottom: 1px solid #5062b8;
 }
 
 .input-sidebar {
@@ -134,15 +138,23 @@ button {
   display: flex;
   flex-direction: column;
   width: calc(100% - 17%);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .top-content {
-  background-color: purple;
+  background-color: #5062b8;
   color: white;
   padding: 2rem 2rem 0rem 2rem;
   border-radius: 15px;
+  position: relative;
+  height: 300px;
 }
+.logo {
+ position: absolute;
+ top: 35px;
+ right: 10px
+}
+
 .top-content p {
   padding: 1rem 0.5rem;
 }
@@ -173,7 +185,7 @@ button {
 
 .filter-bar {
   display: flex;
-  margin: 1.5rem 0rem;
+  margin: 1rem 0rem;
   height: 2.5rem;
   align-items: center;
   justify-content: space-between;
@@ -202,8 +214,8 @@ button {
 
 .filter-bar__right p {
   padding: 0.2rem 0.5rem;
-  border: 1px solid purple;
+  border: 1px solid #5062b8;
   border-radius: 10px;
   font-weight: bold;
-  color: purple;
+  color: #5062b8;
 }

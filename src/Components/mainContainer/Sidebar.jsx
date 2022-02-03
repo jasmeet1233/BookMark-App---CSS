@@ -5,6 +5,8 @@ import axios from "axios";
 import client from "../../api/api_loginSignUp";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { ActionCreators } from "redux-devtools";
+import { AiFillFolder } from "react-icons/ai";
 
 //pos
 
@@ -23,26 +25,14 @@ const callApi = async () => {
 const Sidebar = () => {
   const folders = useSelector((state) => state.bookmarkReducer.folder);
   const dispatch = useDispatch();
-  
+
   const folderDeleteHandler = async (id) => {
     const token = await JSON.parse(localStorage.getItem("bookmarkToken"));
-    const data = {folderId: id};
-    // const config = {
-    //   method: "delete",
-    //   url: url,
-    //   headers: {Authorization: `Bearer ${token}`},
-    //   data: data,
-    // };
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    confirmDeletion()
-    const response = await client.delete("/folder", { data: { folderId: id } });
-    console.log(response)
+    const data = { folderId: id };
+    console.log("hello");
+    dispatch({ type: "addDeleteID", payload: id });
+    confirmDeletion();
+    console.log(id);
   };
 
   const addFolder = () => {
@@ -53,9 +43,18 @@ const Sidebar = () => {
     dispatch({ type: "openDeleteModal" });
   }
 
+  const setFolderID = async (id) => {
+    dispatch({ type: "setFolderID", payload: id });
+    const response = await client.get("folder-bookmarks", {
+      params: { folderId: id },
+    });
+    console.log(response, "---response");
+    dispatch({ type: "bookmark_Fetch_Success", payload: response.data });
+  };
+
   return (
     <aside className="sidebar">
-      {/* <div className="top-sidebar">
+      <div className="top-sidebar">
         <div>All projects</div>
         <div>Root</div>
         <div>Favorites</div>
@@ -64,7 +63,7 @@ const Sidebar = () => {
       <div className="mid-sidebar">
         <div>Folders</div>
         <div>Tags</div>
-      </div> */}
+      </div>
 
       <div className="input-sidebar">
         <div>
@@ -81,10 +80,31 @@ const Sidebar = () => {
           return (
             <div
               key={folder.id}
-              style={{ position: "relative", paddingTop: "10px" }}
+              style={{
+                position: "relative",
+                padding: "8px",
+                display: "flex",
+                width: "85%",
+                cursor: "pointer",
+              }}
+              className="folder"
             >
-              <p style={{ display: "inline" }}>{folder.name}</p>
-              <button
+              <div
+                style={{
+                  paddingLeft: "10px",
+                  paddingRight: "20px",
+                  paddingTop: "2px",
+                }}
+              >
+                <AiFillFolder />{" "}
+              </div>
+              <p
+                style={{ display: "inline" }}
+                onClick={() => setFolderID(folder.id)}
+              >
+                {folder.name}
+              </p>
+              {/* <button
                 style={{
                   display: "inline",
                   position: "absolute",
@@ -96,7 +116,7 @@ const Sidebar = () => {
                 onClick={() => folderDeleteHandler(folder.id)}
               >
                 X
-              </button>
+              </button> */}
             </div>
           );
         })}

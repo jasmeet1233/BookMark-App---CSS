@@ -30,7 +30,7 @@ const Login = () => {
 
   useEffect(() => {
     if (!isEmpty(data.userData)) {
-      console.log(isEmpty(data.userData));
+      console.log(isEmpty(data.userData), '--------userData');
       localStorage.setItem(
         "bookmarkToken",
         JSON.stringify(data.userData.token)

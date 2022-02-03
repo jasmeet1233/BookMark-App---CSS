@@ -1,0 +1,46 @@
+.updateModal {
+    width: 400px;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.updateModal h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5062b8;
+}
+
+.updateModal p {
+    font-size: large;
+    margin-bottom: 10px;
+    color: #5062b8;
+}
+
+.updateModal input {
+    width: 90%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid grey !important ;
+    border-style: none;
+    padding: 10px;
+}
+
+.updateModal .save {
+    background-color:#5062b8;
+    color: white;
+    padding: 8px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    background-color: transparent;
+    border-style: none;
+    font-size: large;
+    color: #5062b8;
+    right: 20px;
+    top: 10px;
+}

@@ -10,7 +10,18 @@
 
 .dropdown p {
 background-color: white;
-border-bottom: 1px solid rgb(238,130,238);
+border-bottom: 1px solid #5062b8;
+cursor: pointer;
+margin-top: 2px;
+margin-left: -1px;
+border-radius: 5px;
+width: 230px;
+}
+
+.dropdown p:hover {
+  background-color: #6b85e6;
+  color: white;
+  text-decoration: underline;
 }
 
 .hide_dropdown {
@@ -24,8 +35,29 @@ border-bottom: 1px solid rgb(238,130,238);
 .deleteModal button {
   padding: 5px;
   margin: 10px;
+  
   background-color: transparent;
-  border: 1px solid rgb(238,130,238);
+  border: 1px solid #5062b8;
   border-radius: 10px;
-  color: purple;
+  color: #5062b8;
+}
+
+.folder {
+  margin: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-left: -4px ;
+}
+
+.folder:hover {
+  background-color: #5062b8;
+ color: white;
+}
+
+.saveBtn {
+  background-color:white ;
+  color: #5062b8;
+  border-style: none;
+  font-weight: bold;
+  margin-bottom: 20px;
 }

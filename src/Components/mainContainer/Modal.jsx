@@ -7,8 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 const ModalWindow = () => {
   const dispatch = useDispatch();
   const [folderName, setFolderName] = useState("");
-  const { isModalOpen, deleteModal } = useSelector((state) => state.bookmarkReducer);
-
+  const { isModalOpen, deleteModal, deleteID } = useSelector((state) => state.bookmarkReducer);
   const customStyles = {
     content: {
       top: "50%",
@@ -19,6 +18,14 @@ const ModalWindow = () => {
       transform: "translate(-50%, -50%)",
     },
   };
+
+  const confirmDeletion = async () => {
+    // const token = await JSON.parse(localStorage.getItem("bookmarkToken"));
+    // const data = { folderId: id };
+    const response = await client.delete("/folder", { data: { folderId: deleteID } });
+    dispatch({ type: 'deleteHandler', payload: deleteID });
+    dispatch({ type: "CloseModal" });
+  }
 
   const submitHandler = async () => {
     if (!folderName) return;
@@ -36,7 +43,7 @@ const ModalWindow = () => {
       <Modal isOpen={isModalOpen} style={customStyles}>
         <div className="deleteModal">
           <p>Confirm Delete</p>
-          <button onClick={() => dispatch({ type: "CloseModal" })}>Yes</button>
+          <button onClick={confirmDeletion}>Yes</button>
           <button onClick={() => dispatch({ type: "CloseModal" })}>No</button>
         </div>
       </Modal>
@@ -45,8 +52,8 @@ const ModalWindow = () => {
 
   return (
     <Modal isOpen={isModalOpen} style={customStyles}>
-      <h3>Folder Name</h3>
-      <input type="text" onChange={(e) => setFolderName(e.target.value)} />
+      <h3 style={{paddingBottom: '5px'}}>Folder Name</h3>
+      <input type="text" onChange={(e) => setFolderName(e.target.value)} style={{paddingLeft: '5px', marginRight: '5px'}}/>
       <button
         onClick={submitHandler}
         style={{
