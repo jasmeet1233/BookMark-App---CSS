@@ -30,17 +30,17 @@ const Login = () => {
 
   useEffect(() => {
     if (!isEmpty(data.userData)) {
-      console.log(isEmpty(data.userData), '--------userData');
+      console.log(isEmpty(data.userData), "--------userData");
       localStorage.setItem(
         "bookmarkToken",
         JSON.stringify(data.userData.token)
       );
       history.push("/");
-    } else if (data.errorMessage.length > 1) {
-      alert("email or password is wrong");
+    } else  if (data.errorMessage) {
+      alert(data.errorMessage);
     }
   }, [data]);
-
+ 
   const loginHandler = (e) => {
     e.preventDefault();
     console.log("login Handler");
@@ -50,9 +50,17 @@ const Login = () => {
     });
   };
 
-  const changeHandler = (e) => {
-    setEmail(e.target.value)
+  const guestLoginHander = (e) => {
+    e.preventDefault()
+     dispatch({
+       type: "CHECK_USER",
+       payload: { email: 'Guest@gmail.com', password: 'test@123' },
+     });
   }
+
+  const changeHandler = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <div className="login">
@@ -92,12 +100,20 @@ const Login = () => {
             >
               Login
             </button> */}
-            <Button
-              clickHandler={loginHandler}
-              name={"Login"}
-              isLoading={data.isLoading}
-              style={'login__button'}
-            />
+            <div>
+              <Button
+                clickHandler={loginHandler}
+                name={"Login"}
+                isLoading={data.isLoading}
+                style={"login__button"}
+              />
+              <Button
+                name="Guest Login"
+                style={"login__button"}
+                isLoading={data.isLoading}
+                clickHandler={guestLoginHander}
+              />
+            </div>
             <Link to="/signup">Create Account {"->"} </Link>
           </div>
         </form>

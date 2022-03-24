@@ -55,9 +55,9 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="top-sidebar">
-        <div>All projects</div>
+        {/* <div>All projects</div>
         <div>Root</div>
-        <div>Favorites</div>
+        <div>Favorites</div> */}
       </div>
 
       <div className="mid-sidebar">

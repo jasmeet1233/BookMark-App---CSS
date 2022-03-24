@@ -5,6 +5,7 @@
   align-items: center;
   margin: auto;
   justify-content: space-around;
+ 
 }
 
 .login__logo img {
@@ -40,6 +41,7 @@
   padding: 7px;
   margin: auto;
   border-radius: 10px;
+  margin-right: 5px;
 }
 
 .login__form-container a {

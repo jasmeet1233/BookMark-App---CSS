@@ -7,7 +7,7 @@ const Button = ({clickHandler, style, isLoading, name}) => {
         className={style}
         disabled={isLoading ? true : false}
       >
-        Login
+        {name}
       </button>
     );
 }

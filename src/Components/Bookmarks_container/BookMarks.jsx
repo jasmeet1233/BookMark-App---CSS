@@ -49,8 +49,6 @@ const BookMarks = ({display}) => {
   const deleteHandler = async (id) => {
     const answer = confirm("Confirm deletion");
     if (answer) {
-      //   const response = await client.delete("bookmark", { bookmarkId: id } );
-      //   console.log(response);
 
       const updatedbookmarks = bookmarks.filter((bookmark) => {
         return bookmark.id !== id;

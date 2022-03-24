@@ -164,15 +164,15 @@ const ContentContainer = () => {
           />
         </div>
 
-        <div className="filter-bar">
-          <div className="filter-bar__left">
+        <div className="filter-bar" style={{'paddingLeft': '10px'}}>
+          {/* <div className="filter-bar__left">
             <input type="text" placeholder="Search" />
             <button>
               <GrFilter size={20} />
             </button>
-          </div>
-
-          <div className="filter-bar__right">
+          </div> */}
+      Your Bookmarks
+          {/* <div className="filter-bar__right">
             <p>Add Link</p>
             <button
               onClick={() => setDisplay("grid")}
@@ -202,7 +202,7 @@ const ContentContainer = () => {
             >
               <MdFormatListBulleted size={20} />
             </button>
-          </div>
+          </div> */}
         </div>
 
         <BookMarks display={display} />

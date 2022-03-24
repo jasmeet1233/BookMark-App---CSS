@@ -17,7 +17,7 @@ const Signup = () => {
       history.push("/");
     } else if (data.errorMessage.length > 1) {
       console.log(data.errorMessage);
-      alert("email already in use");
+      alert(data.errorMessage);
     }
   }, [data]);
 
