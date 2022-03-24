@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import useAuthenticationHook from "../../Hooks/authenticationHook";
 import InputField from "../../Components/Input";
 import Button from "../../Components/Button";
+import { Credentials } from "../../credentials";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -54,7 +55,7 @@ const Login = () => {
     e.preventDefault()
      dispatch({
        type: "CHECK_USER",
-       payload: { email: 'Guest@gmail.com', password: 'test@123' },
+       payload: { email: Credentials.ID, password: Credentials.PASSWORD },
      });
   }
 
